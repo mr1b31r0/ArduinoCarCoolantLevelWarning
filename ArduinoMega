@@ -176,9 +176,14 @@ void getlevel(){
   sensor1 =0;
   sensor2 =0;
   sensor1 = digitalRead(lowSensor);
-  //if (sensor1==HIGH) Serial.println("Sensor Low is - HIGH");
+  if (sensor1==LOW) {
+    Serial.println("Sensor Low is - HIGH");
+    coolantLevel++;
+    }
   sensor2 = digitalRead(highSensor);
- // if (sensor2 == HIGH) Serial.println("Sensor high is - HIGH");
-  coolantLevel = sensor1 + sensor2;
-  if (sensor1 == 0 && sensor2 == 1) coolantLevel = 3;
+ if (sensor2 == LOW){
+    Serial.println("Sensor high is - HIGH");
+    coolantLevel++;
+  }
+  if (sensor1 == 1 && sensor2 == 0) coolantLevel = 3; 
 }
